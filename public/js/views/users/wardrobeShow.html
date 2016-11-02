@@ -1,4 +1,4 @@
-<h2>{{wardrobe.items[0].owner.firstName.toUpperCase()}}'S WARDROBE</h2>
+<h2><span ng-show="wardrobe.items.length">{{wardrobe.items[0].owner.firstName.toUpperCase()}}'S </span>WARDROBE</h2>
 <a id="menu-toggle" ng-click="main.toggleFilter()" href="#">Filters</a>
 <h4 id="no-items" ng-hide="wardrobe.items">No items found</h4>
 <ul class="clothes-index">
