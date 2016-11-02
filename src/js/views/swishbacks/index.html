@@ -1,0 +1,8 @@
+<h1>{{swishback.items[0].owner.firstName.toUpperCase()}}'S WARDROBE</h1>
+<h4 id="no-items" ng-hide="swishback.items">No items found</h4>
+<ul class="clothes-index">
+  <li ng-repeat="item in swishback.items track by $index" ui-sref="swishbackShow({ id: item._id, transaction : swishback.transaction_id })">
+    <img ng-src="{{item.image}}" alt="" />
+    <h4>{{item.title}}</h4>
+  </li>
+</ul>

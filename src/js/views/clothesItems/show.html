@@ -1,0 +1,16 @@
+<div ng-hide="clothesItems.item.length" class="items-show" ng-cloak>
+  <img ng-src="{{ clothesItems.item.image }}">
+  <ul>
+    <li><h1 ng-cloak>{{ clothesItems.item.title }}</h1></li>
+    <li><p ng-cloak>{{clothesItems.item.description}}</p></li>
+    <li><p ng-cloak>Category: {{clothesItems.item.category}}</p></li>
+    <li><p ng-cloak>Sex: {{clothesItems.item.sex}}</p></li>
+  </ul>
+</div>
+<ul ng-cloak ng-hide="clothesItems.item.length" class="list-inline nav-buttons">
+
+  <li ng-show="(main.user.id == clothesItems.item.owner)"><a ng-cloak class="btn btn-default"  ui-sref="clothesItemsEdit({id: clothesItems.item._id})">Edit</a></li>
+  <li ng-show="(main.user.id != clothesItems.item.owner)"><button class="swish-button btn" ><a ng-click="clothesItems.swish()">SWISH</a></button></li>
+  <li><a ng-cloak class="btn btn-default" href="javascript:history.back()">Back</a></li>
+  <li ng-show="(main.user.id == clothesItems.item.owner)" id="delete-button" ><a ng-cloak class="btn btn-danger"  ng-click="clothesItems.delete()">Delete</a></li>
+</ul>

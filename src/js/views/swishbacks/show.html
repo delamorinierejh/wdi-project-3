@@ -1,0 +1,14 @@
+<div ng-hide="swishback.item.length" class="items-show" ng-cloak>
+  <img ng-src="{{ swishback.item.image }}">
+  <ul>
+    <li><h1 ng-cloak>{{ swishback.item.title }}</h1></li>
+    <li><p ng-cloak>{{swishback.item.description}}</p></li>
+    <li><p ng-cloak>Category: {{swishback.item.category}}</p></li>
+    <li><p ng-cloak>Sex: {{swishback.item.sex}}</p></li>
+  </ul>
+</div>
+<ul ng-cloak ng-hide="swishback.item.length" class="list-inline nav-buttons">
+
+  <li><a ng-click="swishback.swishback()" class="btn btn-success">SWISHBACK</a></li>
+  <li><a class="btn btn-default" ui-sref="swishbackIndex( { user : swishback.item.owner } )">Back</a></li>
+</ul>

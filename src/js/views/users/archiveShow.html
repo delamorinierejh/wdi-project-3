@@ -1,0 +1,32 @@
+<div class="inbox">
+  <h2>ARCHIVE</h2>
+
+  <ul>
+    <li ng-repeat="transaction in archive.transactions">
+      <div class="row">
+
+        <div class="col-md-4 col-xs-4 one">
+          <h3>{{transaction.initiator.firstName}} wants:</h3>
+          <div class="image-container">
+            <img class="img-fluid" ui-sref="clothesItemsShow({ id : transaction.initial_item._id })" ng-src="{{ transaction.initial_item.image }}" />
+          </div>
+        </div>
+
+        <div class="col-md-4 col-xs-4 two">
+          <h3>{{transaction.responder.firstName}} wants:</h3>
+          <div class="image-container">
+            <img ui-sref="clothesItemsShow({ id : transaction.response_item._id})" ng-src="{{ transaction.response_item.image }}" />
+          </div>
+          <button ui-sref="swishbackIndex( { user : transaction.initiator._id, transaction : transaction._id } )" ng-hide="transaction.response_item" id="view-their-closet">View Their Items</button>
+        </div>
+
+        <div class="col-md-4 col-xs-4">
+          <h3>Set it up!</h3>
+          <a class="btn btn-success" href="mailto:{{transaction.emailAddress}}?subject=Let's swish!">Get in touch</a>
+        </div>
+      </div>
+      </div>
+    </li>
+  </ul>
+  <h4 ng-hide="archive.transactions.length">You haven't completed any swishes yet!</h4>
+</div>
