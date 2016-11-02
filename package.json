@@ -4,23 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover node_modules/.bin/_mocha"
+    "test": "istanbul cover node_modules/.bin/_mocha",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.0.2",
-    "supertest": "^2.0.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "chai": "^3.5.0",
     "cors": "^2.8.0",
     "express": "^4.14.0",
     "express-jwt": "^5.0.0",
+    "forever": "^0.15.3",
+    "istanbul": "^0.4.5",
     "jsonwebtoken": "^7.1.9",
+    "mocha": "^3.0.2",
     "mongoose": "4.1.1",
     "morgan": "^1.7.0",
+    "supertest": "^2.0.0",
     "validator": "^5.6.0"
   },
   "devDependencies": {
