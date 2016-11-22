@@ -1,16 +1,16 @@
 angular
-.module("swishListApp")
-.controller("HomeCtrl", HomeCtrl);
+.module('swishListApp')
+.controller('HomeCtrl', HomeCtrl);
 
-HomeCtrl.$inject = ["User", "CurrentUserService", "$state"];
+HomeCtrl.$inject = ['User', 'CurrentUserService', '$state'];
 function HomeCtrl(User, CurrentUserService, $state){
   const vm = this;
 
-  if (CurrentUserService.getUser()) $state.go("clothesItemsIndex");
+  if (CurrentUserService.getUser()) $state.go('clothesItemsIndex');
 
   vm.register = () => {
     User
-    .register( { user : vm.userRegister })
+    .register( { user: vm.userRegister })
     .$promise
     .then(data => {
       const user = data.user || null;

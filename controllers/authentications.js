@@ -1,17 +1,17 @@
 module.exports = {
   register: authenticationsRegister,
-  login:    authenticationsLogin
+  login: authenticationsLogin
 };
 
-const User   = require("../models/user");
-const jwt    = require("jsonwebtoken");
-const config = require("../config/config");
+const User   = require('../models/user');
+const jwt    = require('jsonwebtoken');
+const config = require('../config/config');
 
 function authenticationsRegister(req, res){
   User.create(req.body.user, (err, user) => {
-    if (err) return res.status(500).json({ message: "Something went wrong." });
+    if (err) return res.status(500).json({ message: 'Something went wrong.' });
 
-    let token = jwt.sign({ id: user.id, username: user.username }, config.secret, { expiresIn: 60*60*24 });
+    const token = jwt.sign({ id: user.id, username: user.username }, config.secret, { expiresIn: 60*60*24 });
 
     return res.status(201).json({
       message: `Welcome ${user.username}!`,
@@ -23,15 +23,15 @@ function authenticationsRegister(req, res){
 
 function authenticationsLogin(req, res){
   User.findOne({ email: req.body.email }, (err, user) => {
-    if (err) return res.status(500).json({ message: "Something went wrong." });
+    if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!user || !user.validatePassword(req.body.password)) {
-      return res.status(401).json({ message: "Unauthorized." });
+      return res.status(401).json({ message: 'Unauthorized.' });
     }
 
-    let token = jwt.sign({ id: user.id, username: user.username }, config.secret, { expiresIn: 60*60*24 });
+    const token = jwt.sign({ id: user.id, username: user.username }, config.secret, { expiresIn: 60*60*24 });
 
     return res.status(200).json({
-      message: "Welcome back.",
+      message: 'Welcome back.',
       user,
       token
     });

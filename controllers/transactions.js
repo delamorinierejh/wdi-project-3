@@ -1,15 +1,15 @@
 module.exports = {
-  index:      transactionsIndex,
-  create:     transactionsCreate,
-  swishback:  transactionsSwishback,
-  approve:    transactionsApprove,
-  reject:     transactionsReject
+  index: transactionsIndex,
+  create: transactionsCreate,
+  swishback: transactionsSwishback,
+  approve: transactionsApprove,
+  reject: transactionsReject
 };
 
 const Transaction = require('../models/transaction');
 
 function transactionsIndex(req, res) {
-  let query = {};
+  const query = {};
   if (req.query.initiator) query.initiator = req.user._id;
   if (req.query.responder) query.responder = req.user._id;
   if (req.query.status) query.status = req.query.status;
@@ -22,9 +22,9 @@ function transactionsIndex(req, res) {
   Transaction.find(query)
     .populate(['initiator', 'responder', 'initial_item', 'response_item'])
     .exec((err, transactions) => {
-    if (err) return res.status(500).json({ message: "Something went wrong." });
-    return res.status(200).json({ transactions });
-  });
+      if (err) return res.status(500).json({ message: 'Something went wrong.' });
+      return res.status(200).json({ transactions });
+    });
 }
 
 function transactionsCreate(req, res){
@@ -40,8 +40,8 @@ function transactionsSwishback(req, res){
   console.log(req.params.id);
   Transaction.findById(req.params.id, (err, transaction) => {
     if (err) return res.status(500).json({ err });
-    if (!transaction) return res.status(404).json({ message: "Swish not found" });
-    if (!req.body.transaction && !req.body.transaction.response_item) return res.status(500).json({ message: "Please include a response item!" });
+    if (!transaction) return res.status(404).json({ message: 'Swish not found' });
+    if (!req.body.transaction && !req.body.transaction.response_item) return res.status(500).json({ message: 'Please include a response item!' });
     transaction.response_item = req.body.transaction.response_item;
     transaction.status        = 2;
     transaction.save((err, transaction) => {
@@ -55,8 +55,8 @@ function transactionsSwishback(req, res){
 function transactionsApprove(req, res){
   Transaction.findById(req.params.id, (err, transaction) => {
     if (err) return res.status(500).json({ err });
-    if (!transaction) return res.status(404).json({ message: "Swish not found" });
-    if (transaction.status !== 2) return res.status(500).json({ message: "You are unable to approve this swish."});
+    if (!transaction) return res.status(404).json({ message: 'Swish not found' });
+    if (transaction.status !== 2) return res.status(500).json({ message: 'You are unable to approve this swish.'});
     transaction.status = 3;
     transaction.save((err, transaction) => {
       if (err) return res.status(500).json({ err });
@@ -69,7 +69,7 @@ function transactionsApprove(req, res){
 function transactionsReject(req, res){
   Transaction.findById(req.params.id, (err, transaction) => {
     if (err) return res.status(500).json({ err });
-    if (!transaction) return res.status(404).json({ message: "Swish not found" });
+    if (!transaction) return res.status(404).json({ message: 'Swish not found' });
     transaction.status = 4;
     transaction.save((err, transaction) => {
       if (err) return res.status(500).json({ err });

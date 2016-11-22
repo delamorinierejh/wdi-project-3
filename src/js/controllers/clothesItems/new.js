@@ -1,8 +1,8 @@
 angular
-.module("swishListApp")
-.controller("ClothesItemsNewCtrl", ClothesItemsNewCtrl);
+.module('swishListApp')
+.controller('ClothesItemsNewCtrl', ClothesItemsNewCtrl);
 
-ClothesItemsNewCtrl.$inject = ["ClothesItem", "$state", 'CurrentUserService'];
+ClothesItemsNewCtrl.$inject = ['ClothesItem', '$state', 'CurrentUserService'];
 function ClothesItemsNewCtrl(ClothesItem, $state, CurrentUserService){
   const vm = this;
   vm.submit = () => {
@@ -10,7 +10,7 @@ function ClothesItemsNewCtrl(ClothesItem, $state, CurrentUserService){
       .save({ clothesItem: vm.item })
       .$promise
       .then(data => {
-        $state.go("clothesItemsIndex");
+        $state.go('clothesItemsIndex');
       });
   };
 }

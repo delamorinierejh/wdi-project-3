@@ -1,8 +1,8 @@
 angular
-.module("swishListApp")
-.controller("SwishbackShowCtrl", SwishbackShowCtrl);
+.module('swishListApp')
+.controller('SwishbackShowCtrl', SwishbackShowCtrl);
 
-SwishbackShowCtrl.$inject = ["ClothesItem", "Transaction", "CurrentUserService", "$stateParams", "$state"];
+SwishbackShowCtrl.$inject = ['ClothesItem', 'Transaction', 'CurrentUserService', '$stateParams', '$state'];
 function SwishbackShowCtrl(ClothesItem, Transaction, CurrentUserService, $stateParams, $state){
   const vm = this;
   vm.transaction_id = $stateParams.transaction;
@@ -13,14 +13,14 @@ function SwishbackShowCtrl(ClothesItem, Transaction, CurrentUserService, $stateP
   });
 
   vm.swishback = () => {
-    let transaction = {
-      response_item : vm.item._id
+    const transaction = {
+      response_item: vm.item._id
     };
     Transaction
-      .swishback({ _id : vm.transaction_id, transaction } )
+      .swishback({ _id: vm.transaction_id, transaction } )
       .$promise
       .then(data => {
-        $state.go("usersIncomingShow");
+        $state.go('usersIncomingShow');
       });
   };
 }

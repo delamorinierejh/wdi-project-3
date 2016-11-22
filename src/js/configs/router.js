@@ -1,16 +1,16 @@
 angular
-  .module("swishListApp")
+  .module('swishListApp')
   .config(Router);
 
-Router.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
+Router.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 function Router($stateProvider, $urlRouterProvider, $locationProvider){
   $locationProvider.html5Mode(true);
 
   $stateProvider
-  .state("home", {
-    url: "/",
-    templateUrl: "/js/views/home.html",
-    controller: "HomeCtrl as home"
+  .state('home', {
+    url: '/',
+    templateUrl: '/js/views/home.html',
+    controller: 'HomeCtrl as home'
   })
   .state('clothesItemsIndex', {
     url: '/clothesItems',
@@ -22,10 +22,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
     templateUrl: '/js/views/clothesItems/new.html',
     controller: 'ClothesItemsNewCtrl as clothesItems'
   })
-  .state("clothesItemsEdit", {
-    url: "/clothesItems/:id/edit",
-    templateUrl: "/js/views/clothesItems/edit.html",
-    controller: "ClothesItemsEditCtrl as clothesItems"
+  .state('clothesItemsEdit', {
+    url: '/clothesItems/:id/edit',
+    templateUrl: '/js/views/clothesItems/edit.html',
+    controller: 'ClothesItemsEditCtrl as clothesItems'
   })
   .state('clothesItemsShow', {
     url: '/clothesItems/:id',
@@ -64,6 +64,6 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
   })
   ;
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise('/');
 
 }

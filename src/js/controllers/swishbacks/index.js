@@ -1,8 +1,8 @@
 angular
-.module("swishListApp")
-.controller("SwishbackIndexCtrl", SwishbackIndexCtrl);
+.module('swishListApp')
+.controller('SwishbackIndexCtrl', SwishbackIndexCtrl);
 
-SwishbackIndexCtrl.$inject = ["ClothesItem", "$stateParams"];
+SwishbackIndexCtrl.$inject = ['ClothesItem', '$stateParams'];
 function SwishbackIndexCtrl(ClothesItem, $stateParams){
   const vm = this;
   vm.transaction_id = $stateParams.transaction;

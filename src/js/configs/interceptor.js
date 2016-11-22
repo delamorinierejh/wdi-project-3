@@ -1,8 +1,8 @@
 angular
-  .module("swishListApp")
+  .module('swishListApp')
   .config(setUpInterceptor);
 
-setUpInterceptor.$inject = ["$httpProvider"];
+setUpInterceptor.$inject = ['$httpProvider'];
 function setUpInterceptor($httpProvider){
-  return $httpProvider.interceptors.push("AuthInterceptor");
+  return $httpProvider.interceptors.push('AuthInterceptor');
 }

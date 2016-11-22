@@ -1,12 +1,12 @@
 angular
-.module("swishListApp")
-.controller("OutgoingShowCtrl", OutgoingShowCtrl);
+.module('swishListApp')
+.controller('OutgoingShowCtrl', OutgoingShowCtrl);
 
-OutgoingShowCtrl.$inject = ["Transaction", "CurrentUserService", "$stateParams", "$state"];
+OutgoingShowCtrl.$inject = ['Transaction', 'CurrentUserService', '$stateParams', '$state'];
 function OutgoingShowCtrl(Transaction, CurrentUserService, $stateParams, $state){
   const vm = this;
   Transaction
-  .query({ initiator : true, activeDeal: true })
+  .query({ initiator: true, activeDeal: true })
   .$promise
   .then(data => {
     vm.transactions = data.transactions;
@@ -17,7 +17,7 @@ function OutgoingShowCtrl(Transaction, CurrentUserService, $stateParams, $state)
     .approve({ _id: idhere })
     .$promise
     .then(data => {
-      $state.go("usersArchiveShow", $stateParams);
+      $state.go('usersArchiveShow', $stateParams);
     });
   };
 

@@ -1,19 +1,19 @@
 angular
-  .module("swishListApp")
-  .service("TokenService", TokenService);
+  .module('swishListApp')
+  .service('TokenService', TokenService);
 
-TokenService.$inject = ["$window", "jwtHelper"];
+TokenService.$inject = ['$window', 'jwtHelper'];
 function TokenService($window, jwtHelper){
   const self = this;
 
   self.setToken = setToken;
   function setToken(token){
-    return $window.localStorage.setItem("auth-token", token);
+    return $window.localStorage.setItem('auth-token', token);
   }
 
   self.getToken = getToken;
   function getToken(){
-    return $window.localStorage.getItem("auth-token");
+    return $window.localStorage.getItem('auth-token');
   }
 
   self.decodeToken = decodeToken;
@@ -24,7 +24,7 @@ function TokenService($window, jwtHelper){
 
   self.clearToken = clearToken;
   function clearToken(){
-    $window.localStorage.removeItem("auth-token");
+    $window.localStorage.removeItem('auth-token');
   }
 
 }

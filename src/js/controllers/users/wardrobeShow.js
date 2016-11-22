@@ -1,12 +1,12 @@
 angular
-.module("swishListApp")
-.controller("WardrobeShowCtrl", WardrobeShowCtrl);
+.module('swishListApp')
+.controller('WardrobeShowCtrl', WardrobeShowCtrl);
 
-WardrobeShowCtrl.$inject = ["ClothesItem", "CurrentUserService"];
+WardrobeShowCtrl.$inject = ['ClothesItem', 'CurrentUserService'];
 function WardrobeShowCtrl(ClothesItem, CurrentUserService){
   const vm = this;
   ClothesItem
-  .query({available : true,  user : CurrentUserService.getUser().id })
+  .query({available: true,  user: CurrentUserService.getUser().id })
   .$promise
   .then(data => {
     vm.items = data.clothesItems;
@@ -16,7 +16,7 @@ function WardrobeShowCtrl(ClothesItem, CurrentUserService){
   function clearFilters(){
     vm.filters = null;
     ClothesItem
-    .query({ available : true, user : CurrentUserService.getUser().id })
+    .query({ available: true, user: CurrentUserService.getUser().id })
     .$promise
     .then(data => {
       vm.items = data.clothesItems;
@@ -26,7 +26,7 @@ function WardrobeShowCtrl(ClothesItem, CurrentUserService){
   vm.filter = filter;
   function filter(){
     ClothesItem
-    .query({ available : true, user : CurrentUserService.getUser().id })
+    .query({ available: true, user: CurrentUserService.getUser().id })
     .$promise
     .then(data => {
       vm.items = data.clothesItems;
@@ -40,13 +40,15 @@ function WardrobeShowCtrl(ClothesItem, CurrentUserService){
       }
       for (var j = 0; j < vm.items.length; j++) {
         if (vm.filters.sex){
-          if (vm.items[j].sex !== vm.filters.sex && vm.items[j].sex !== "unisex"){
+          if (vm.items[j].sex !== vm.filters.sex && vm.items[j].sex !== 'unisex'){
             vm.items.splice(j, 1);
             j--;
           }
         }
       }
-      if (vm.items.length === 0){vm.items = null;}
+      if (vm.items.length === 0){
+        vm.items = null;
+      }
     });
   }
 }

@@ -1,12 +1,12 @@
 angular
-.module("swishListApp")
-.controller("ClothesItemsIndexCtrl", ClothesItemsIndexCtrl);
+.module('swishListApp')
+.controller('ClothesItemsIndexCtrl', ClothesItemsIndexCtrl);
 
-ClothesItemsIndexCtrl.$inject = ["ClothesItem"];
+ClothesItemsIndexCtrl.$inject = ['ClothesItem'];
 function ClothesItemsIndexCtrl(ClothesItem){
   const vm = this;
   ClothesItem
-  .query({available : true})
+  .query({available: true})
   .$promise
   .then(data => {
     vm.items = data.clothesItems;
@@ -21,7 +21,7 @@ function ClothesItemsIndexCtrl(ClothesItem){
   function clearFilters(){
     vm.filters = null;
     ClothesItem
-    .query({available : true})
+    .query({available: true})
     .$promise
     .then(data => {
       vm.items = data.clothesItems;
@@ -30,7 +30,7 @@ function ClothesItemsIndexCtrl(ClothesItem){
   vm.filter = filter;
   function filter(){
     ClothesItem
-    .query({available : true})
+    .query({available: true})
     .$promise
     .then(data => {
       vm.items = data.clothesItems;
@@ -44,13 +44,15 @@ function ClothesItemsIndexCtrl(ClothesItem){
       }
       for (var j = 0; j < vm.items.length; j++) {
         if (vm.filters.sex){
-          if (vm.items[j].sex !== vm.filters.sex && vm.items[j].sex !== "unisex"){
+          if (vm.items[j].sex !== vm.filters.sex && vm.items[j].sex !== 'unisex'){
             vm.items.splice(j, 1);
             j--;
           }
         }
       }
-      if (vm.items.length === 0){vm.items = null;}
+      if (vm.items.length === 0){
+        vm.items = null;
+      }
     });
   }
 }

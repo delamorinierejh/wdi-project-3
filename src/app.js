@@ -1,5 +1,5 @@
 angular
-.module("swishListApp", [
-  "ui.router",
-  "ngResource"
+.module('swishListApp', [
+  'ui.router',
+  'ngResource'
 ]);

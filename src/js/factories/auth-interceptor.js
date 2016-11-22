@@ -1,8 +1,8 @@
 angular
-  .module("swishListApp")
-  .factory("AuthInterceptor", AuthInterceptor);
+  .module('swishListApp')
+  .factory('AuthInterceptor', AuthInterceptor);
 
-AuthInterceptor.$inject = ["API", "TokenService"];
+AuthInterceptor.$inject = ['API', 'TokenService'];
 function AuthInterceptor(API, TokenService){
   return {
     request(config){

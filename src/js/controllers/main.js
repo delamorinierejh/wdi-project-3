@@ -1,15 +1,15 @@
 angular
-.module("swishListApp")
-.controller("MainCtrl", MainCtrl);
+.module('swishListApp')
+.controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ["$rootScope", "CurrentUserService", "$state"];
+MainCtrl.$inject = ['$rootScope', 'CurrentUserService', '$state'];
 function MainCtrl($rootScope, CurrentUserService, $state) {
   const vm = this;
   vm.user = CurrentUserService.getUser();
 
-  $rootScope.$on("loggedIn", () => {
+  $rootScope.$on('loggedIn', () => {
     vm.user = CurrentUserService.getUser();
-    $state.go("clothesItemsIndex");
+    $state.go('clothesItemsIndex');
   });
 
   vm.logout = () => {
@@ -17,9 +17,9 @@ function MainCtrl($rootScope, CurrentUserService, $state) {
     CurrentUserService.clearUser();
   };
 
-  $rootScope.$on("loggedOut", () => {
+  $rootScope.$on('loggedOut', () => {
     vm.user = null;
-    $state.go("home");
+    $state.go('home');
   });
 
   vm.toggleBurger = toggleBurger;
@@ -31,8 +31,8 @@ function MainCtrl($rootScope, CurrentUserService, $state) {
   function toggleFilter(){
     event.stopPropagation();
     event.preventDefault();
-    console.log("clicked");
-    $("#menu-toggle").toggleClass("clicked");
-    $("#sidebar-wrapper").toggleClass("active");
+    console.log('clicked');
+    $('#menu-toggle').toggleClass('clicked');
+    $('#sidebar-wrapper').toggleClass('active');
   }
 }

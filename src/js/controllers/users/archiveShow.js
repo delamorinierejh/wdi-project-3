@@ -1,13 +1,13 @@
 angular
-  .module("swishListApp")
-  .controller("ArchiveShowCtrl", ArchiveShowCtrl);
+  .module('swishListApp')
+  .controller('ArchiveShowCtrl', ArchiveShowCtrl);
 
 
-  ArchiveShowCtrl.$inject = ["Transaction", "CurrentUserService"];
-  function ArchiveShowCtrl(Transaction, CurrentUserService){
-    const vm = this;
-    Transaction
-    .query({ status : 3, responder : CurrentUserService.getUser().id})
+ArchiveShowCtrl.$inject = ['Transaction', 'CurrentUserService'];
+function ArchiveShowCtrl(Transaction, CurrentUserService){
+  const vm = this;
+  Transaction
+    .query({ status: 3, responder: CurrentUserService.getUser().id})
     .$promise
     .then(data => {
       vm.transactions = data.transactions;
@@ -15,7 +15,7 @@ angular
         vm.transactions[i].emailAddress = vm.transactions[i].initiator.email;
       }
       Transaction
-      .query({ status : 3, initiator : CurrentUserService.getUser().id })
+      .query({ status: 3, initiator: CurrentUserService.getUser().id })
       .$promise
       .then(data => {
         vm.transactionsTwo = data.transactions;
@@ -25,4 +25,4 @@ angular
         }
       });
     });
-  }
+}
